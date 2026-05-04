@@ -1,0 +1,35 @@
+{
+  "entities": {
+    "Presentation": {
+      "title": "Presentation",
+      "description": "A generated presentation with slides.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "The UID of the owner." },
+        "title": { "type": "string", "description": "The title of the presentation." },
+        "slides": { 
+          "type": "array",
+          "description": "The list of slides.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": { "type": "string" },
+              "bullets": { "type": "array", "items": { "type": "string" } },
+              "notes": { "type": "string" },
+              "layout": { "type": "string" }
+            }
+          }
+        },
+        "createdAt": { "type": "number" },
+        "theme": { "type": "string" }
+      },
+      "required": ["userId", "title", "slides", "createdAt"]
+    }
+  },
+  "firestore": {
+    "presentations/{presentationId}": {
+      "schema": "Presentation",
+      "description": "Stored presentations for users."
+    }
+  }
+}
